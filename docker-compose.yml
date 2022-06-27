@@ -1,0 +1,15 @@
+version: '3.7'
+services:
+  ### Node #########################################
+  node:
+    build:
+      context: ./docker/node
+      args:
+        - NODE_VERSION=14.17.6
+    container_name: "pokemon_graphql_node"
+    volumes:
+      - ./:/app
+      - ./docker/.dock-data/yarn-cache:/usr/local/share/.cache/yarn/v6
+    ports:
+      - "3000:3000"
+    tty: true
